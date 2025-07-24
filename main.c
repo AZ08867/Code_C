@@ -2,6 +2,7 @@
 #include "stdio.h"
 #include <float.h>
 #include <inttypes.h>
+#include <math.h>
 #include <stdint.h>
 
 int main() {
@@ -70,5 +71,23 @@ int main() {
   printf("Min Float: %e\n", min_float);
   printf("Overflow: %e\n", overflow);
   printf("Underflow: %e\n", underflow);
+
+  // inf and nan
+  printf("Positive Infinity: %e\n", INFINITY);
+  printf("Negative Infinity: %e\n", -INFINITY);
+
+  // 1/0 --> inf
+  float number = 1.0f;
+  float result = number / 0.0f;
+  printf("1.0 / 0.0 = %e\n", result);
+
+  // 0/0 --> nan
+  float zero = 0.0f;
+  float zero_division = zero / zero;
+  printf("0.0 / 0.0 = %e\n", zero_division);
+  printf("NaN: %e\n", NAN);
+
+  // sqrt
+  printf("Square root of -1: %f\n", sqrt(-1.0f));
   return 0;
 }
