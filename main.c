@@ -89,5 +89,14 @@ int main() {
 
   // sqrt
   printf("Square root of -1: %f\n", sqrt(-1.0f));
+
+  // 银行家舍入 --> 四舍六入五成双（如果小数位为5，前面是奇数则进位，否则舍弃）
+  // message: use gcc -> 3.25 will be rounded to 3.3
+  // message: use clang -> 3.25 will be rounded to 3.2
+  // message: use zig cc -> 3.25 will be rounded to 3.2
+  float num1 = 3.15f;
+  printf("1 -> %.1f\n", num1);
+  num1 = 3.25f;
+  printf("2 -> %.1f\n", num1);
   return 0;
 }
