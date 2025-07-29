@@ -6,6 +6,7 @@
 - `float` - Single precision floating point type, typically 4 bytes.
 - `double` - Double precision floating point type, typically 8 bytes.
 - `char` - Character type, typically 1 byte.
+- `bool` - Boolean type, typically 1 byte (requires `<stdbool.h>`).
 
 相关文件:
 
