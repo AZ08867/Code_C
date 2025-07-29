@@ -7,10 +7,19 @@
 - `double` - Double precision floating point type, typically 8 bytes.
 - `char` - Character type, typically 1 byte.
 - `bool` - Boolean type, typically 1 byte (requires `<stdbool.h>`).
+- `define` - Preprocessor macro definition.
 
 相关文件:
 
 1. main.c
 2. hello.c
 
-## Chapter 2
+## Chapter 2: Operators and Expressions
+
+- Arithmetic Operators: `+`, `-`, `*`, `/`, `%`
+- Relational Operators: `==`, `!=`, `>`, `<`, `>=`, `<=`
+- Logical Operators: `&&`, `||`, `!`
+- Bit
+- wise Operators: `&`, `|`, `^`, `~`, `<<`, `>>`
+- Assignment Operators: `=`, `+=`, `-=`, `*=`, `/=`, `%=`
+- Increment/Decrement Operators: `++`, `--`

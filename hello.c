@@ -1,6 +1,7 @@
 #include <float.h>
 #include <stdbool.h>
 #include <stdio.h>
+#define E 2.71828 // 宏定义
 
 int main() {
   double num1 = 123.456;
@@ -43,5 +44,10 @@ int main() {
   } else {
     printf("Game is still running\n");
   }
+
+  // const in c 也可以使用宏定义
+  const double PI = 3.14159;
+  printf("Value of PI: %.5f\n", PI);
+  printf("Value of E: %.5f\n", E);
   return 0;
 }
