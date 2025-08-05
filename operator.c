@@ -1,4 +1,5 @@
 #include <inttypes.h>
+#include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 
@@ -46,7 +47,7 @@ int main() {
   printf("After Swap: a = %" PRIu32 ", b = %" PRIu32 "\n", a, b);
 
   // 按位取反
-  u8 status = 0b10101010; // 二进制表示
+  u8 status = 0b00001100; // 二进制表示
   printf("Original Status: ");
   printBinary(status);
   printf("\n");
@@ -54,11 +55,26 @@ int main() {
   printf("After Inversion: ");
   printBinary(status);
   printf("\n");
+
+  // 逻辑运算
+  bool flag = true;
+  bool result1 = flag && true;  // 逻辑与
+  bool result2 = flag || false; // 逻辑或
+  bool result3 = !flag;         // 逻辑非
+  printf("Logical AND: %s\n", result1 ? "true" : "false");
+  printf("Logical OR: %s\n", result2 ? "true" : "false");
+  printf("Logical NOT: %s\n", result3 ? "true" : "false");
+
+  // , 运算符, 只会使用最后一个表达式的值
+  u8 x = 1, y = 2, z = 3;
+  u8 result_value = (x += 1, y += 2, z += 3, 41); // 链式赋值
+  printf("x = %" PRIu8 ", y = %" PRIu8 ", z = %" PRIu8 "\n", x, y, z);
+  printf("Result Value: %" PRIu8 "\n", result_value);
   return 0;
 }
 
 void printBinary(u8 num) {
-  for (int i = 7; i >= 0; i--) {
-    printf("%d", (num >> i) & 1);
+  for (int index = 7; index >= 0; index--) {
+    printf("%d", (num >> index) & 1);
   }
 }
