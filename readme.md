@@ -9,10 +9,9 @@
 - `bool` - Boolean type, typically 1 byte (requires `<stdbool.h>`).
 - `define` - Preprocessor macro definition.
 
-相关文件:
-
-1. main.c
-2. hello.c
+- attachment:
+    1. [main.c](main.c)
+    2. [hello.c](hello.c)
 
 ## Chapter 2: Operators and Expressions
 
@@ -30,3 +29,30 @@
 - 按位或：两个位中有一个为1时，结果位为1，否则为0。
 - 按位异或：两个位不同时为1时，结果位为1，否则为0。
 - 取反：对每个位取反，即0变1，1变0。
+
+- attachment:
+    1. [operator.c](operator.c)
+
+## Chapter 3: Control Structures
+
+- `if` statement
+  - Grammar: `if (expression) statement`
+  - Example: `if (age >= 18) printf("You are an adult.");`
+- `if-else` statement
+  - Grammar: `if (expression) statement1 else statement2`
+  - Example: `if (age >= 18) printf("You are an adult."); else printf("You are a minor.");`
+- `if- else if - else` statement
+  - Grammar: `if (expression1) statement1 else if (expression2) statement2 else statement3`
+  - Example: `if (age >= 18) printf("You are an adult."); else if (age >= 6) printf("You are a teenager."); else printf("You are a child.");`
+- `switch` statement
+  - Grammar: `switch (expression) { case constant1: statement1; case constant2: statement2; ...; default: statementN; }`
+  - Example: `switch (day) { case 1: printf("Monday"); break; case 2: printf("Tuesday"); break; ...; default: printf("Invalid day"); }`
+
+## Chapter 4: Loop Structures
+
+- `while` loop
+- `do-while` loop
+- `for` loop
+
+- attachment:
+  - [loop.c](loop.c)
