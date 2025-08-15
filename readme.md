@@ -51,7 +51,11 @@
 ## Chapter 4: Loop Structures
 
 - `while` loop
+  - Grammar: `while (expression) statement`
+  - Example: `int i = 0; while (i < 10) { printf("%d ", i); i++; }`
 - `do-while` loop
+  - Grammar: `do { statement } while (expression);`
+  - Example: `int i = 0; do { printf("%d ", i); i++; } while (i < 10);`
 - `for` loop
 
 - attachment:
