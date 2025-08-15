@@ -10,8 +10,8 @@ int main() {
 
   // puts("Starting race...");
   // while (current_lap < TOTAL_LAPS) {
-  //   printf("Lap: %" PRIu32 "\n", current_lap);
   //   current_lap++;
+  //   printf("Lap: %" PRIu32 "\n", current_lap);
   // }
 
   /*CASE: Vending machine code here...
