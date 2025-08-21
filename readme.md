@@ -59,8 +59,18 @@
   - Example: `int i = 0; do { printf("%d ", i); i++; } while (i < 10);`
 
 - `for` loop
+  - Grammar: `for (initialization; condition; increment/decrement) statement`
+  - Example: `for (int i = 0; i < 10; i++) { printf("%d ", i); }`
 
 - attachment:
   - [loop.c](loop.c)
   - [loop_case.c](loop_case.c)
   - [loop_do.c](loop_do.c)
+  - [loop_continue.c](loop_continue.c)
+  - [loop_for.c](loop_for.c)
+
+### Trains
+
+- [quadratic_sum.c](./trains/quadratic_sum.c)
+- [countdown.c](./trains/countdown.c)
+- [factorial.c](./trains/factorial.c)
