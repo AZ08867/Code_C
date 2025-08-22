@@ -74,3 +74,4 @@
 - [quadratic_sum.c](./trains/quadratic_sum.c)
 - [countdown.c](./trains/countdown.c)
 - [factorial.c](./trains/factorial.c)
+- [prime_number.c](./trains/prime_number.c)
