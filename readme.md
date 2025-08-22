@@ -75,3 +75,4 @@
 - [countdown.c](./trains/countdown.c)
 - [factorial.c](./trains/factorial.c)
 - [prime_number.c](./trains/prime_number.c)
+- [multiplication_table.c](./trains/multiplication_table.c)
