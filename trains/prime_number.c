@@ -20,16 +20,17 @@ int main() {
   if (num == 2) {
     is_prime = true;
   } else {
-    for (u32 i = 3; i <= sqrt(num); i += 2) {
+    /* for (u32 i = 3; i <= sqrt(num); i += 2) { */
+    for (u32 i = 3; i * i < num; i += 2) { // 更优的方案
       if (num % i == 0) {
         is_prime = false;
         break;
       }
     }
     if (is_prime) {
-      printf("%" PRIu32 " is a prime number\n", num);
+      printf("You entered %" PRIu32 " which is a prime number\n", num);
     } else {
-      printf("%" PRIu32 " is not a prime number\n", num);
+      printf("You entered %" PRIu32 " which is not a prime number\n", num);
     }
     return 0;
   }
