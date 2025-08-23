@@ -12,7 +12,8 @@ int main() {
   puts("数字金字塔图案如下：");
   for (u32 i = 1; i <= levels; i++) {
     // printf("%" PRIu32, i); // i --> 控制行号
-    for (u32 j = 0; j <= levels - i; j++) {
+    u32 space = levels - i;
+    for (u32 j = 0; j <= space; j++) {
       printf("  "); // 输出空格
     }
     for (u32 k = 1; k <= i; k++) {
