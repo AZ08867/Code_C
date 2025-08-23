@@ -76,3 +76,4 @@
 - [factorial.c](./trains/factorial.c)
 - [prime_number.c](./trains/prime_number.c)
 - [multiplication_table.c](./trains/multiplication_table.c)
+- [digital_pyramid.c](./trains/digital_pyramid.c)
