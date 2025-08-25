@@ -78,3 +78,8 @@
 - [multiplication_table.c](./trains/multiplication_table.c)
 - [digital_pyramid.c](./trains/digital_pyramid.c)
 - [progress_bar.c](./trains/progress_bar.c)
+
+## Chapter 5: Arrays and Pointers
+
+- attachment:
+  - [initial_use_array.c](initial_use_array.c)
