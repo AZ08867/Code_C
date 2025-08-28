@@ -81,5 +81,8 @@
 
 ## Chapter 5: Arrays and Pointers
 
+- `array`
+  - Grammar: `type array_name[size];`
+
 - attachment:
   - [initial_use_array.c](initial_use_array.c)
