@@ -86,3 +86,4 @@
 
 - attachment:
   - [initial_use_array.c](initial_use_array.c)
+  - [array_case.c](./trains/array_case.c)
