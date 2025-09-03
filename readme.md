@@ -87,3 +87,14 @@
 - attachment:
   - [initial_use_array.c](initial_use_array.c)
   - [array_case.c](./trains/array_case.c)
+
+## Chapter 6: Functions
+
+```c
+void greet(int age) {}
+```
+
+形式参数： `int age`
+实参： `greet(18);`
+
+- 递归 -- Recursion
