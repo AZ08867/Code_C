@@ -98,3 +98,11 @@ void greet(int age) {}
 实参： `greet(18);`
 
 - 递归 -- Recursion
+- 静态变量 -- Static Variables
+- attachment:
+  - [func.c](func.c)
+  - [func_case.c](./trains/func_case.c)
+  - [factorial_recursion.c](./trains/factorial_recursion.c)
+  - [static.c](static.c)
+
+## Chapter 7: Address and Pointer
