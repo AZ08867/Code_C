@@ -105,4 +105,17 @@ void greet(int age) {}
   - [factorial_recursion.c](./trains/factorial_recursion.c)
   - [static.c](static.c)
 
-## Chapter 7: Address and Pointer
+## Chapter 7: Address and Pointe
+
+- 指针变量 -- Pointer Variables
+- 指针运算 -- Pointer Arithmetic
+- 指针数组 -- Array of Pointers
+- 指向指针的指针 -- Pointer to Pointer
+- 函数指针 -- Function Pointers
+- 空指针 -- Null Pointer --> 指向了一个不指向任何有效内存地址的指针
+- 野指针 -- Wild Pointer --> 指向了一个无效的内存地址或已经释放的内存地址的指针
+
+```c
+int* p; // 微软的规范，表明强调 p 是一个指向 int 类型的指针
+int *p; // K&R 的规范，表明强调 *p 是一个 int 类型
+```
