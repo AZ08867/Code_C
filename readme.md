@@ -126,4 +126,5 @@ int *p; // K&R 的规范，表明强调 *p 是一个 int 类型
   - [pointer.c](pointer.c)
   - [pointer_case.c](./trains/pointer_case.c)
   - [pointer_case_pro.c](./trains/pointer_case_pro.c)
-  -[ptr_matrix.c](./trains/ptr_matrix.c)
+  - [ptr_matrix.c](./trains/ptr_matrix.c)
+  - [pointer_array.c](./trains/pointer_array.c)
