@@ -24,6 +24,6 @@ int main(void) {
 
 void add_ten_by_value(i32 value) {
   value += 10;
-  printf("%" PRId32 "\n", value);
+  /* printf("%" PRId32 "\n", value); */
 }
 void add_ten_by_reference(i32 *value) { *value += 10; }
