@@ -122,9 +122,17 @@ int *p; // K&R 的规范，表明强调 *p 是一个 int 类型
 
 `size_t` - 无符号整数类型，通常用于表示对象的大小。
 
+### 函数的值传递与地址引用传递
+
+- 函数的值传递 -- Passing by Value
+  - 调用函数时，将实参的值复制到函数的局部变量中，因此函数内对实参的修改不会影响到调用函数的地方。
+  - 表示形参与实参是不同的地址，因为是复制值。
+- 函数的地址引用传递 -- Passing by Reference to Pointer
+
 - attachment:
   - [pointer.c](pointer.c)
   - [pointer_case.c](./trains/pointer_case.c)
   - [pointer_case_pro.c](./trains/pointer_case_pro.c)
   - [ptr_matrix.c](./trains/ptr_matrix.c)
   - [pointer_array.c](./trains/pointer_array.c)
+  - [pointer_func.c](./trains/pointer_func.c)
