@@ -105,7 +105,7 @@ void greet(int age) {}
   - [factorial_recursion.c](./trains/factorial_recursion.c)
   - [static.c](static.c)
 
-## Chapter 7: Address and Pointe
+## Chapter 7: Address and Pointer
 
 - 指针变量 -- Pointer Variables
 - 指针运算 -- Pointer Arithmetic
