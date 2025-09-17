@@ -138,7 +138,9 @@ int *p; // K&R 的规范，表明强调 *p 是一个 int 类型
   - [pointer_func.c](./trains/pointer_func.c)
   - [pointer_func_case.c](./trains/pointer_func_case.c)
 
-## Chapter 8: Structures
+## Chapter 8: Structures and Enumeration and Union
+
+### Struct
 
 关于给结构体起别名：可以使用 `typedef` 关键字为结构体创建别名 下面是使用别名的两种方式：
 
@@ -164,7 +166,29 @@ typedef struct Date {
 Date today = {17, 9, 2025};  // 使用时可以直接用 Date
 ```
 
+### Enum
+
+定义：枚举是一种用户定义的数据类型，它允许你定义一组命名的常量。默认情况下，第一个枚举成员的值为 0，后续成员的值依次加 1。
+
+- 使用场景:
+  - 用于定义一组相关的常量
+  - 提高代码的可读性和可维护性
+  - 常用于表示状态、选项或固定的值集合
+  - 每个枚举成员占用独立的存储空间
+
+### Union
+
+定义：联合是一种特殊的数据类型，允许在相同的内存位置存储不同的数据类型。联合的大小由最大的成员决定，所有成员共享同一块内存空间。主要用于在同一内存位置存储不同类型的数据。
+
+- 使用场景:
+  - 节省内存空间
+  - 只能同时使用一个成员
+  - 所有成员共享同一块内存空间
+  - 常用于需要在不同类型间复用内存的场景
+
 - attachment:
   - [struct.c](struct.c)
   - [struct_case.c](./trains/struct_case.c)
   - [struct_case_ptr.c](./trains/struct_case_ptr.c)
+  - [enum.c](enum.c)
+  - [union.c](union.c)
