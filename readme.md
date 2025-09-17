@@ -137,3 +137,34 @@ int *p; // K&R 的规范，表明强调 *p 是一个 int 类型
   - [pointer_array.c](./trains/pointer_array.c)
   - [pointer_func.c](./trains/pointer_func.c)
   - [pointer_func_case.c](./trains/pointer_func_case.c)
+
+## Chapter 8: Structures
+
+关于给结构体起别名：可以使用 `typedef` 关键字为结构体创建别名 下面是使用别名的两种方式：
+
+```c
+struct Date {
+    int day;
+    int month;
+    int year;
+};
+typedef struct Date Date;  // 创建别名
+
+Date today = {17, 9, 2025};  // 使用时可以直接用 Date
+```
+
+```c
+// 推荐使用
+typedef struct Date {
+    int day;
+    int month;
+    int year;
+} Date;  // 直接在结构体定义时创建别名
+
+Date today = {17, 9, 2025};  // 使用时可以直接用 Date
+```
+
+- attachment:
+  - [struct.c](struct.c)
+  - [struct_case.c](./trains/struct_case.c)
+  - [struct_case_ptr.c](./trains/struct_case_ptr.c)
