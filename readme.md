@@ -192,3 +192,8 @@ Date today = {17, 9, 2025};  // 使用时可以直接用 Date
   - [struct_case_ptr.c](./trains/struct_case_ptr.c)
   - [enum.c](enum.c)
   - [union.c](union.c)
+
+## Chapter 9: String
+
+- attachment:
+  - [string.c](string.c)
