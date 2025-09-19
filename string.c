@@ -25,5 +25,17 @@ int main(void) {
   strcat_s(first, dest_size, two);
   printf("%s", first);
 
+  /// sprintf_s usage
+  char buffer[50] = {0};
+  int number = 3;
+  double pi = 3.14159265354;
+  int ret = sprintf_s(buffer, sizeof(buffer), "Integer: %d, Double: %.5f",
+                      number, pi);
+  if (ret > 0) {
+    printf("Formatted string: %s\n", buffer);
+  } else {
+    printf("Error Formatting string");
+  }
+
   return 0;
 }

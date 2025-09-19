@@ -197,3 +197,5 @@ Date today = {17, 9, 2025};  // 使用时可以直接用 Date
 
 - attachment:
   - [string.c](string.c)
+  - [string_func.c](string_func.c)
+  - [string_case.c](./trains/string_case.c)
