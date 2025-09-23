@@ -199,3 +199,24 @@ Date today = {17, 9, 2025};  // 使用时可以直接用 Date
   - [string.c](string.c)
   - [string_func.c](string_func.c)
   - [string_case.c](./trains/string_case.c)
+
+## Chapter 10: Stdin and Stdout
+
+- 流（Stream）
+  1. 文件流
+    用于读取和写入在磁盘上的文件。
+  2. 标准I/O流
+     - 标准输入流（stdin）: 默认从键盘读取数据。
+     - 标准输出流（stdout）: 默认将数据输出到屏幕。
+     - 标准错误流（stderr）: 默认将错误信息输出到屏幕。
+  3. 管道流
+    用于在进程间通信（IPC）传递数据。允许一个进程的输出成为另一个进程的输入。
+  4. 内存流
+    用于在内存中读写数据，而不是在磁盘上操作文件。
+  5. 网络流
+    用于通过网络套接字进行数据传输。
+  6. 设备六流
+    用于与硬件设备（如打印机、串口等）进行通信。
+
+- attachment:
+  - [read_file.c](read_file.c)

@@ -1,0 +1,18 @@
+hello
+c lang
+cpp
+csharp
+go
+python
+java
+javascript
+php
+nodejs
+bun
+deno
+ruby
+R
+c3
+zig
+rust
+crystal

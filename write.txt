@@ -1,0 +1,3 @@
+Hi
+This is a line written by fputs.
+Numbers: 42, 3.14, Halo
