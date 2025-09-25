@@ -1,3 +1,17 @@
 {
-  "cSpell.words": ["stdbool"]
+  "cSpell.words": [
+    "fclose",
+    "fopen",
+    "fread",
+    "fwrite",
+    "memcpy",
+    "nullptr",
+    "stdbool",
+    "stddef",
+    "stdint",
+    "strcmp",
+    "strlcpy",
+    "strncat",
+    "strncpy"
+  ]
 }

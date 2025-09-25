@@ -1,222 +1,243 @@
-# C Programming Language Learn
+# C Programming Language — Learning Notes
 
-## Chapter 1: Basic data types
+## Chapter 1: Fundamental data types
 
-- `int` - Integer type, typically 4 bytes.
-- `float` - Single precision floating point type, typically 4 bytes.
-- `double` - Double precision floating point type, typically 8 bytes.
-- `char` - Character type, typically 1 byte.
-- `bool` - Boolean type, typically 1 byte (requires `<stdbool.h>`).
-- `define` - Preprocessor macro definition.
+本章概述标准 C（C99/C11）中的基本内建类型。类型的字节大小与表示形式可能依赖于编译器与目标架构；下列值为常见平台（例如 x86-64 上的 gcc/clang）上的典型约定。请使用 sizeof 与 stdint.h 在可移植性要求较高的场景中获取确定性行为。
 
-- attachment:
-    1. [main.c](main.c)
-    2. [hello.c](hello.c)
+- `int` — signed integer type; typically 4 bytes on modern desktop/server ABIs. Range is implementation-defined.
+- `float` — single-precision IEEE-754 floating-point; typically 4 bytes.
+- `double` — double-precision IEEE-754 floating-point; typically 8 bytes.
+- `char` — character type; at least 1 byte. May be signed or unsigned depending on implementation.
+- `_Bool` — boolean type introduced in C99 (include `<stdbool.h>` to use the token `bool`); typically 1 byte.
+- `#define` — preprocessor macro for textual substitution and constants (compile-time).
+
+Notes:
+
+- Always prefer `stdint.h` types (e.g. `int32_t`, `uint32_t`) when fixed widths are required.
+- Use `sizeof(T)` to obtain actual byte size on the target platform.
+
+Attachments:
+
+  1. [main.c](main.c)
+  2. [hello.c](hello.c)
 
 ## Chapter 2: Operators and Expressions
 
-- Arithmetic Operators: `+`, `-`, `*`, `/`, `%`
-- Relational Operators: `==`, `!=`, `>`, `<`, `>=`, `<=`
-- Logical Operators: `&&`, `||`, `!`
-- Bit
-- wise Operators: `&`, `|`, `^`, `~`, `<<`, `>>`
-- Assignment Operators: `=`, `+=`, `-=`, `*=`, `/=`, `%=`
-- Increment/Decrement Operators: `++`, `--`
+- Arithmetic: `+`, `-`, `*`, `/`, `%`
+- Relational: `==`, `!=`, `>`, `<`, `>=`, `<=`
+- Logical: `&&`, `||`, `!`
+- Bitwise: `&`, `|`, `^`, `~`, `<<`, `>>`
+- Assignment: `=`, `+=`, `-=`, `*=`, `/=`, `%=`
+- Increment/Decrement: `++`, `--`
 
-> 按位与操作符是 &，按位或操作符是 |，按位异或操作符是 ^, 取反操作符是 ~，左移操作符是 <<，右移操作符是 >>。
+Remarks on bitwise operators (按位运算):
 
-- 按位与：两个位都为1时，结果位为1，否则为0。
-- 按位或：两个位中有一个为1时，结果位为1，否则为0。
-- 按位异或：两个位不同时为1时，结果位为1，否则为0。
-- 取反：对每个位取反，即0变1，1变0。
+按位运算用于在位级别上处理整数表示。请注意有符号整数的右移行为在移位负值时可能由实现定义；位运算常用于掩码、标志位与性能敏感的低级操作。
 
-- attachment:
-    1. [operator.c](operator.c)
+Attachment:
+
+  1. [operator.c](operator.c)
 
 ## Chapter 3: Control Structures
 
-- `if` statement
-  - Grammar: `if (expression) statement`
-  - Example: `if (age >= 18) printf("You are an adult.");`
-- `if-else` statement
-  - Grammar: `if (expression) statement1 else statement2`
-  - Example: `if (age >= 18) printf("You are an adult."); else printf("You are a minor.");`
-- `if- else if - else` statement
-  - Grammar: `if (expression1) statement1 else if (expression2) statement2 else statement3`
-  - Example: `if (age >= 18) printf("You are an adult."); else if (age >= 6) printf("You are a teenager."); else printf("You are a child.");`
-- `switch` statement
-  - Grammar: `switch (expression) { case constant1: statement1; case constant2: statement2; ...; default: statementN; }`
-  - Example: `switch (day) { case 1: printf("Monday"); break; case 2: printf("Tuesday"); break; ...; default: printf("Invalid day"); }`
+- `if`
+  - Syntax: `if (expression) statement;`
+  - Example: `if (age >= 18) printf("You are an adult.\n");`
+- `if-else`
+  - Syntax: `if (expr) stmt1; else stmt2;`
+- `if - else if - else`
+  - Use when testing multiple mutually exclusive conditions.
+- `switch`
+  - Syntax: `switch (expression) { case constant: statements; break; ... default: statements; }`
+  - Note: switch uses integral constant expressions for cases; remember to add break to avoid fall-through (or use fall-through intentionally with comments).
+
+控制结构用于决定程序的执行流向：条件分支（if/switch）用于选择性执行，循环结构用于重复执行。编写分支时注意可读性与边界条件处理。
 
 ## Chapter 4: Loop Structures
 
-- `while` loop
-  - Grammar: `while (expression) statement`
-  - Example: `int i = 0; while (i < 10) { printf("%d ", i); i++; }`
+- `while`
+  - Syntax: `while (expression) statement;`
+  - Use for condition-driven repetition.
+- `do-while`
+  - Syntax: `do { statements } while (expression);`
+  - Guarantees body executes at least once.
+- `for`
+  - Syntax: `for (init; condition; update) statement;`
+  - Idiomatic for counter-based loops.
 
-- `do-while` loop
-  - Grammar: `do { statement } while (expression);`
-  - Example: `int i = 0; do { printf("%d ", i); i++; } while (i < 10);`
+- `while`
+  - 用于条件驱动的重复执行，适合循环次数不确定且由运行时条件终止的场景。
+- `do-while`
+  - 适用于至少需要执行一次循环体的场景；注意循环不变式与终止条件。
 
-- `for` loop
-  - Grammar: `for (initialization; condition; increment/decrement) statement`
-  - Example: `for (int i = 0; i < 10; i++) { printf("%d ", i); }`
+Attachments:
 
-- attachment:
-  - [loop.c](loop.c)
-  - [loop_case.c](loop_case.c)
-  - [loop_do.c](loop_do.c)
-  - [loop_continue.c](loop_continue.c)
-  - [loop_for.c](loop_for.c)
+- [loop.c](loop.c)
+- [loop_case.c](loop_case.c)
+- [loop_do.c](loop_do.c)
+- [loop_continue.c](loop_continue.c)
+- [loop_for.c](loop_for.c)
 
-### Trains
+Training exercises (trains):
 
-- [quadratic_sum.c](./trains/quadratic_sum.c)
-- [countdown.c](./trains/countdown.c)
-- [factorial.c](./trains/factorial.c)
-- [prime_number.c](./trains/prime_number.c)
-- [multiplication_table.c](./trains/multiplication_table.c)
-- [digital_pyramid.c](./trains/digital_pyramid.c)
-- [progress_bar.c](./trains/progress_bar.c)
+- [trains/quadratic_sum.c](./trains/quadratic_sum.c)
+- [trains/countdown.c](./trains/countdown.c)
+- [trains/factorial.c](./trains/factorial.c)
+- [trains/prime_number.c](./trains/prime_number.c)
+- [trains/multiplication_table.c](./trains/multiplication_table.c)
+- [trains/digital_pyramid.c](./trains/digital_pyramid.c)
+- [trains/progress_bar.c](./trains/progress_bar.c)
 
 ## Chapter 5: Arrays and Pointers
 
-- `array`
-  - Grammar: `type array_name[size];`
+- Array declaration: `type name[size];`
+- Arrays are contiguous sequences of elements; decay to pointers in many expressions.
+- Prefer explicit size types and bounds checking when possible.
 
-- attachment:
-  - [initial_use_array.c](initial_use_array.c)
-  - [array_case.c](./trains/array_case.c)
+数组在内存中是连续存储的元素序列，在多数表达式中会衰减为指针。编写与数组相关的代码时，应显式关注边界检查与元素类型的对齐与大小。
+
+Attachments:
+
+- [initial_use_array.c](initial_use_array.c)
+- [trains/array_case.c](./trains/array_case.c)
 
 ## Chapter 6: Functions
 
+Prototype example:
+
 ```c
-void greet(int age) {}
+void greet(int age);
 ```
 
-形式参数： `int age`
-实参： `greet(18);`
+- Formal parameter: `int age`
+- Actual argument: `greet(18);`
 
-- 递归 -- Recursion
-- 静态变量 -- Static Variables
-- attachment:
-  - [func.c](func.c)
-  - [func_case.c](./trains/func_case.c)
-  - [factorial_recursion.c](./trains/factorial_recursion.c)
-  - [static.c](static.c)
+Topics:
 
-## Chapter 7: Address and Pointer
+- Recursion — functions that call themselves; ensure a base case to avoid unbounded recursion.
+- Static local variables — preserve value across function calls (use static keyword).
 
-- 指针变量 -- Pointer Variables
-- 指针运算 -- Pointer Arithmetic
-- 指针数组 -- Array of Pointers
-- 指向指针的指针 -- Pointer to Pointer
-- 函数指针 -- Function Pointers
-- 空指针 -- Null Pointer --> 指向了一个不指向任何有效内存地址的指针
-- 野指针 -- Wild Pointer --> 指向了一个无效的内存地址或已经释放的内存地址的指针
+函数参数采用值传递语义（按值复制）。若需在函数内部修改调用者的数据，应传入指针或结构的地址以实现间接修改。递归函数必须保证基准情况以避免栈耗尽。
+
+Attachments:
+
+- [func.c](func.c)
+- [trains/func_case.c](./trains/func_case.c)
+- [trains/factorial_recursion.c](./trains/factorial_recursion.c)
+- [static.c](static.c)
+
+## Chapter 7: Memory, Pointers and Addressing
+
+- Pointer variables — hold memory addresses; declared as `T *p;`
+- Pointer arithmetic — moves in units of the pointed type `sizeof(T)`.
+- Pointer arrays — arrays whose elements are pointers.
+- Pointer-to-pointer — `T **pp;`
+- Function pointers — allow storing and passing functions.
+- Null pointer — represents "no object" (use `NULL` or nullptr-like semantics).
+- Dangling/wild pointers — pointers that reference freed or invalid memory; avoid by initializing and nulling after free.
+
+Style conventions:
 
 ```c
-int* p; // 微软的规范，表明强调 p 是一个指向 int 类型的指针
-int *p; // K&R 的规范，表明强调 *p 是一个 int 类型
+int* p; // emphasizes that p is a pointer to int (stylistic)
+int *p; // emphasizes that *p has type int (classic)
 ```
 
-`size_t` - 无符号整数类型，通常用于表示对象的大小。
+`size_t` — unsigned integer type used for object sizes and array indexing (defined in `<stddef.h>` / `<stdint.h>`).
 
-### 函数的值传递与地址引用传递
+Parameter passing:
 
-- 函数的值传递 -- Passing by Value
-  - 调用函数时，将实参的值复制到函数的局部变量中，因此函数内对实参的修改不会影响到调用函数的地方。
-  - 表示形参与实参是不同的地址，因为是复制值。
-- 函数的地址引用传递 -- Passing by Reference to Pointer
+- C uses pass-by-value semantics: function parameters receive copies of the argument values.
+- To allow a function to modify a caller's object, pass a pointer to that object (i.e., simulate pass-by-reference).
 
-- attachment:
-  - [pointer.c](pointer.c)
-  - [pointer_case.c](./trains/pointer_case.c)
-  - [pointer_case_pro.c](./trains/pointer_case_pro.c)
-  - [ptr_matrix.c](./trains/ptr_matrix.c)
-  - [pointer_array.c](./trains/pointer_array.c)
-  - [pointer_func.c](./trains/pointer_func.c)
-  - [pointer_func_case.c](./trains/pointer_func_case.c)
+指针用于保存内存地址，指针算术按所指类型的对象大小递增或递减。使用指针时应明确所有权与生命周期，避免野指针与重复释放。空指针（`NULL`）用于表示“不指向任何对象”的语义。
 
-## Chapter 8: Structures and Enumeration and Union
+`size_t` 为无符号整型，专用于表示对象大小与数组索引，使用时应注意与有符号类型的比较与转换。
 
-### Struct
+Attachments:
 
-关于给结构体起别名：可以使用 `typedef` 关键字为结构体创建别名 下面是使用别名的两种方式：
+- [pointer.c](pointer.c)
+- [trains/pointer_case.c](./trains/pointer_case.c)
+- [trains/pointer_case_pro.c](./trains/pointer_case_pro.c)
+- [trains/ptr_matrix.c](./trains/ptr_matrix.c)
+- [trains/pointer_array.c](./trains/pointer_array.c)
+- [trains/pointer_func.c](./trains/pointer_func.c)
+- [trains/pointer_func_case.c](./trains/pointer_func_case.c)
 
-```c
-struct Date {
-    int day;
-    int month;
-    int year;
-};
-typedef struct Date Date;  // 创建别名
+## Chapter 8: Struct, Enum and Union
 
-Date today = {17, 9, 2025};  // 使用时可以直接用 Date
-```
+Struct:
+
+- Use typedef to create convenient aliases:
 
 ```c
-// 推荐使用
 typedef struct Date {
     int day;
     int month;
     int year;
-} Date;  // 直接在结构体定义时创建别名
-
-Date today = {17, 9, 2025};  // 使用时可以直接用 Date
+} Date;
 ```
 
-### Enum
+- Use structs to aggregate related data; consider padding/alignment effects on `sizeof`.
 
-定义：枚举是一种用户定义的数据类型，它允许你定义一组命名的常量。默认情况下，第一个枚举成员的值为 0，后续成员的值依次加 1。
+结构体用于将多个相关数据项组合为一个复合类型；应考虑内存对齐与填充对 sizeof 的影响。使用 typedef 可以使类型名更简洁、更易读。
 
-- 使用场景:
-  - 用于定义一组相关的常量
-  - 提高代码的可读性和可维护性
-  - 常用于表示状态、选项或固定的值集合
-  - 每个枚举成员占用独立的存储空间
+Enum:
 
-### Union
+- Enumerations define related named integer constants.
+- By default values start at 0 and increment by 1; explicit values can be assigned.
 
-定义：联合是一种特殊的数据类型，允许在相同的内存位置存储不同的数据类型。联合的大小由最大的成员决定，所有成员共享同一块内存空间。主要用于在同一内存位置存储不同类型的数据。
+枚举用于定义一组具名的整型常量，便于表达状态与选项集合；在需要与外部接口交换固定值时推荐使用显式枚举值。
 
-- 使用场景:
-  - 节省内存空间
-  - 只能同时使用一个成员
-  - 所有成员共享同一块内存空间
-  - 常用于需要在不同类型间复用内存的场景
+Union:
 
-- attachment:
-  - [struct.c](struct.c)
-  - [struct_case.c](./trains/struct_case.c)
-  - [struct_case_ptr.c](./trains/struct_case_ptr.c)
-  - [enum.c](enum.c)
-  - [union.c](union.c)
+- A union stores different types in the same memory region; its size equals its largest member.
+- Use unions when it is necessary to reinterpret storage or conserve memory — be cautious about active member semantics.
 
-## Chapter 9: String
+联合体在同一内存区域按不同类型重用存储，非常适合节省内存或实现低级数据重解释；访问时必须明确当前“活动成员”的语义以避免未定义行为。
 
-- attachment:
-  - [string.c](string.c)
-  - [string_func.c](string_func.c)
-  - [string_case.c](./trains/string_case.c)
+Attachments:
 
-## Chapter 10: Stdin and Stdout
+- [struct.c](struct.c)
+- [trains/struct_case.c](./trains/struct_case.c)
+- [trains/struct_case_ptr.c](./trains/struct_case_ptr.c)
+- [enum.c](enum.c)
+- [union.c](union.c)
 
-- 流（Stream）
-  1. 文件流
-    用于读取和写入在磁盘上的文件。
-  2. 标准I/O流
-     - 标准输入流（stdin）: 默认从键盘读取数据。
-     - 标准输出流（stdout）: 默认将数据输出到屏幕。
-     - 标准错误流（stderr）: 默认将错误信息输出到屏幕。
-  3. 管道流
-    用于在进程间通信（IPC）传递数据。允许一个进程的输出成为另一个进程的输入。
-  4. 内存流
-    用于在内存中读写数据，而不是在磁盘上操作文件。
-  5. 网络流
-    用于通过网络套接字进行数据传输。
-  6. 设备六流
-    用于与硬件设备（如打印机、串口等）进行通信。
+## Chapter 9: String Handling
 
-- attachment:
-  - [read_file.c](read_file.c)
+- In C, strings are NUL-terminated char arrays.
+- Prefer safe functions (`strncpy`/`strncat`/`strlcpy` where available) and always ensure termination.
+- Use `string.h` for standard routines (`strlen`, `memcpy`, `strcmp`, etc.).
+
+在 C 中，字符串由以 NUL (`'\0'`) 结尾的 char 数组表示。处理字符串时应始终保证终止符存在，避免缓冲区溢出。优先使用带边界限制的字符串函数或手动检查长度。
+
+Attachments:
+
+- [string.c](string.c)
+- [string_func.c](string_func.c)
+- [trains/string_case.c](./trains/string_case.c)
+
+## Chapter 10: Streams (stdin, stdout, files)
+
+Stream categories:
+
+流（stream）是抽象的 I/O 源/目标，如文件、标准输入输出、管道或网络套接字。使用文件 I/O 时应检查返回值并及时释放资源以防资源泄露。
+
+1. File streams — reading/writing disk files (`FILE*`, `fopen`, `fread`, `fwrite`, `fclose`).
+2. Standard streams — `stdin`, `stdout`, `stderr`.
+3. Pipes — inter-process communication where one process's output can be another's input.
+4. Memory streams — in-memory buffering APIs.
+5. Network streams — socket-based I/O.
+6. Device streams — platform/device-specific interfaces.
+
+Attachments:
+
+- [read_file.c](read_file.c)
+- [write_file.c](write_file.c)
+- [file_func.c](file_func.c)
+- [file_err.c](file_err.c)
+
+General recommendations
+
+通用建议：在有可移植性要求时使用明确宽度类型（`stdint.h`）；对 I/O、内存分配等函数的返回值进行检查；明确资源的所有权并及时释放；启用编译器警告以尽早发现潜在缺陷。
