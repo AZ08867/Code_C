@@ -237,6 +237,7 @@ Attachments:
 - [write_file.c](write_file.c)
 - [file_func.c](file_func.c)
 - [file_err.c](file_err.c)
+- [file_append.c](file_append.c)
 
 General recommendations
 
