@@ -238,7 +238,44 @@ Attachments:
 - [file_func.c](file_func.c)
 - [file_err.c](file_err.c)
 - [file_append.c](file_append.c)
+- [trains/bin_r_w.c](./trains/bin_r_w.c)
+- [trains/copy_file.c](./trains/copy_file.c)
 
 General recommendations
 
 通用建议：在有可移植性要求时使用明确宽度类型（`stdint.h`）；对 I/O、内存分配等函数的返回值进行检查；明确资源的所有权并及时释放；启用编译器警告以尽早发现潜在缺陷。
+
+## Chapter 11: Math.h
+
+Attachments:
+
+- [math_exp.c](math_exp.c)
+
+## Chapter 12: Time.h
+
+Attachments:
+
+- [time_exp.c](time_exp.c)
+
+## Chapter 13: Dynamic memory allocation
+
+计算机操作系统内存的管理机制：
+有以下两种不同的存储区域
+
+1. 栈内存(Stack Memory)
+  `int number; --> 4bytes`
+  `int arr[4]; --> 编译时确定是4个长度`
+  a. 自动管理机制：函数调用的时候，局部变量会被分配在栈上，当函数返回的时候，局部变量全部销毁释放
+  b. 速度快：栈内存的分配和访问速度通常要比堆内存快，但是它是一种线性的数据结构
+  c. 大小有限制
+  d. 函数的局部变量、函数参数、函数调用的返回地址
+
+2. 堆内存(Heap Memory)
+  a. 手动内存管理：`malloc`, `calloc`, `realloc`, `free`
+  b. 大小灵活
+
+区分：
+a. 分配机制
+b. 生命周期
+c. 访问速度
+d. 用途区分

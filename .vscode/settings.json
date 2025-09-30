@@ -1,9 +1,11 @@
 {
   "cSpell.words": [
+    "calloc",
     "fclose",
     "fopen",
     "fread",
     "fwrite",
+    "malloc",
     "memcpy",
     "nullptr",
     "stdbool",
