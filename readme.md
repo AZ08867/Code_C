@@ -279,3 +279,30 @@ a. 分配机制
 b. 生命周期
 c. 访问速度
 d. 用途区分
+
+Attachments:
+
+- [dynamic.c](dynamic.c)
+- [trains/realloc_case.c](./trains/realloc_case.c)
+- [trains/malloc_case.c](./trains/malloc_case.c)
+- [trains/calloc_case.c](./trains/calloc_case.c)
+
+### Multilevel Pointers
+
+Attachments:
+
+- [m_ptr.c](m_ptr.c)
+- [trains/m_ptr_case.c](./trains/m_ptr_case.c)
+
+### Management of Dynamic Data Structures
+
+Attachments:
+
+- [manage_dds.c](manage_dds.c)
+
+## Chapter 14: Function Pointer
+
+Attachments:
+
+- [func_ptr.c](func_ptr.c)
+- [trains/func_ptr_case.c](./trains/func_ptr_case.c)

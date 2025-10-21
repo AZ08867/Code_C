@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
   double cos_value = 0.0;
   double tan_value = 0.0;
 
-  printf("请输入角度（度°）:\n");
+
   scanf_s("%lf", &input_angle_degress);
 
   // 将角度转换为弧度
