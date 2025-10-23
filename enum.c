@@ -5,11 +5,12 @@ int main(int argc, char *argv[]) {
     MONDAY, // 0 TUESDAY,
     WEDNESDAY,
     THURSDAY,
-    FARIDAY,
+    FRIDAY,
     SATURDAY,
     SUNDAY
   } Weekday;
 
-  printf("%d", MONDAY);
+  // printf("%d", MONDAY);
+  printf("%d", SUNDAY);
   return 0;
 }
