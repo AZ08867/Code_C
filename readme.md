@@ -18,8 +18,8 @@ Notes:
 
 Attachments:
 
-  1. [main.c](main.c)
-  2. [hello.c](hello.c)
+1. [main.c](main.c)
+2. [hello.c](hello.c)
 
 ## Chapter 2: Operators and Expressions
 
@@ -36,7 +36,7 @@ Remarks on bitwise operators (按位运算):
 
 Attachment:
 
-  1. [operator.c](operator.c)
+1. [operator.c](operator.c)
 
 ## Chapter 3: Control Structures
 
@@ -62,6 +62,7 @@ Attachment:
   - Syntax: `do { statements } while (expression);`
   - Guarantees body executes at least once.
 - `for`
+
   - Syntax: `for (init; condition; update) statement;`
   - Idiomatic for counter-based loops.
 
@@ -263,16 +264,16 @@ Attachments:
 有以下两种不同的存储区域
 
 1. 栈内存(Stack Memory)
-  `int number; --> 4bytes`
-  `int arr[4]; --> 编译时确定是4个长度`
-  a. 自动管理机制：函数调用的时候，局部变量会被分配在栈上，当函数返回的时候，局部变量全部销毁释放
-  b. 速度快：栈内存的分配和访问速度通常要比堆内存快，但是它是一种线性的数据结构
-  c. 大小有限制
-  d. 函数的局部变量、函数参数、函数调用的返回地址
+   `int number; --> 4bytes`
+   `int arr[4]; --> 编译时确定是4个长度`
+   a. 自动管理机制：函数调用的时候，局部变量会被分配在栈上，当函数返回的时候，局部变量全部销毁释放
+   b. 速度快：栈内存的分配和访问速度通常要比堆内存快，但是它是一种线性的数据结构
+   c. 大小有限制
+   d. 函数的局部变量、函数参数、函数调用的返回地址
 
 2. 堆内存(Heap Memory)
-  a. 手动内存管理：`malloc`, `calloc`, `realloc`, `free`
-  b. 大小灵活
+   a. 手动内存管理：`malloc`, `calloc`, `realloc`, `free`
+   b. 大小灵活
 
 区分：
 a. 分配机制
@@ -308,3 +309,9 @@ Attachments:
 - [trains/func_ptr_case.c](./trains/func_ptr_case.c)
 - [trains/callback.c](./trains/callback.c)
 - [function_pointer.md](./function_pointer.md)
+
+### Pro
+
+Attachments:
+
+- [read](./pro/read.md)
