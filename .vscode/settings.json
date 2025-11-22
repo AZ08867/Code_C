@@ -15,5 +15,6 @@
     "strlcpy",
     "strncat",
     "strncpy"
-  ]
+  ],
+  "markdown.validate.enabled": true
 }
