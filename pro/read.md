@@ -12,6 +12,6 @@
 
 - variable_arguments.c
 
-## 自定义日志函数
+## 自定义日志函数 (练习)
 
 - custom_log.c
