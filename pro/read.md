@@ -11,3 +11,7 @@
 ## 可变参数
 
 - variable_arguments.c
+
+## 自定义日志函数
+
+- custom_log.c
