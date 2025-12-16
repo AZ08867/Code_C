@@ -15,3 +15,7 @@
 ## 自定义日志函数 (练习)
 
 - custom_log.c
+
+## 断言函数
+
+- assert_functions.c
