@@ -19,3 +19,7 @@
 ## 断言函数
 
 - assert_functions.c
+
+## 日志系统与指针问题的处理
+
+- log_system.c
