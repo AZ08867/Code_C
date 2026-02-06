@@ -1,5 +1,6 @@
 #include <stdarg.h>
 #include <stdbool.h>
+// 日志级别枚举类型
 typedef enum {
   LOG_DEBUG,
   LOG_INFO,
