@@ -1,5 +1,8 @@
+#pragma once
 #include "types.h"
+#include <assert.h>
 #include <stddef.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 /*
@@ -8,17 +11,7 @@
  * @return 指向分配内存的指针，失败返回NULL
  */
 
-inline void *safe_malloc(size_t size) {
-  if (size == 0) {
-    return NULL;
-  }
-  void *ptr = malloc(size);
-  if (!ptr) {
-    // 内存分配失败，处理错误
-    return NULL;
-  }
-  return ptr;
-}
+void *safe_malloc(size_t size);
 
 /*
  * 安全重新分配内存
@@ -27,22 +20,11 @@ inline void *safe_malloc(size_t size) {
  * @return 指向重新分配内存的指针，失败返回NULL
  */
 
-inline void *safe_remalloc(void *ptr, size_t newSize) {
-  if (ptr) {
-    free(ptr);
-    ptr = NULL; // 避免悬空指针
-  }
-  return safe_malloc(newSize);
-}
+void *safe_remalloc(void *ptr, size_t newSize);
 
 /*
  * 安全释放内存
  * @params ptr 指向需要释放内存的指针
  */
 
-inline void safe_free(void **ptr) {
-  if (ptr) {
-    free(ptr);
-    ptr = NULL; // 避免悬空指针
-  }
-}
+void safe_free(void **ptr);
