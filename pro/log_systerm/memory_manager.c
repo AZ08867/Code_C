@@ -7,11 +7,12 @@ void *safe_malloc(size_t size) {
   void *ptr = NULL;
 
   // C11
-  // #if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L
-  //   /* ptr = aligned_alloc(alignof(max_align_t), size); */
-  // #else
-  //   /* ptr = malloc(size); */
-  // #endif
+  /* #if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L */
+  /*   ptr = aligned_alloc(alignof(max_align_t), size); */
+  /* #else */
+  /*   ptr = malloc(size); */
+  /* #endif */
+  ptr = malloc(size);
   if (ptr == NULL) {
     // 在实际应用中，可能不希望在分配失败时候停止程序
     // 所以，这里使用断言为了调试方便，容易看到问题

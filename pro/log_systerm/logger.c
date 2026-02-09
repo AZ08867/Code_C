@@ -11,9 +11,9 @@ bool logger_init(const char *logFilePath) {
     errno_t err = fopen_s(&logFile, logFilePath, "a");
     if (err != 0 || !logFile) {
       return false;
-    } else {
-      logFile = stdout;
     }
+  } else {
+    logFile = stdout;
   }
   return true;
 }

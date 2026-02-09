@@ -22,4 +22,4 @@
 
 ## 日志系统与指针问题的处理
 
-- log_system.c
+- [run_app](./log_systerm/run_app.c)
