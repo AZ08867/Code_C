@@ -5,9 +5,11 @@
 #include <stdbool.h>
 #include <stdio.h>
 
+#define PATH "application.log"
+
 bool app_init(void) {
   // 实例，初始化日志系统
-  if (!logger_init(NULL)) {
+  if (!logger_init(PATH)) {
     fprintf(stderr, "Failed to initialize logger.");
     return false;
   }
