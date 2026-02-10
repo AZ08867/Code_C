@@ -23,3 +23,7 @@
 ## 日志系统与指针问题的处理
 
 - [run_app](./log_systerm/run_app.c)
+
+## 读取环境变量
+
+- [env](./env.c)
