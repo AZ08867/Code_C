@@ -1,6 +1,4 @@
 #include "MemoryManagement.h"
-#include <corecrt.h>
-#include <corecrt_malloc.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,10 +11,6 @@
 #endif
 
 static size_t currentMemoryUsage = 0;
-int main(int argc, char *argv[]) {
-  puts("Hello");
-  return EXIT_SUCCESS;
-}
 
 void *SafeMalloc(size_t size) {
   void *ptr = malloc(size);

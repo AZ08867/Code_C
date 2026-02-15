@@ -1,5 +1,6 @@
 #include "TypeSafetyAndErrorHandling.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 /* Portable thread-local storage macro: MSVC vs. C11-compatible compilers */
 #if defined(_MSC_VER)
@@ -40,7 +41,9 @@ ErrorCode CheckNotNull(const void *ptr) {
 }
 
 void HandleError(ErrorCode code) {
+  const char *message = GetErrorMessage(code);
+  fprintf(stderr, "Error: %s\n", message);
   if (code != SUCCESS) {
-    fprintf(stderr, "Error (%d): %s\n", (int)code, GetErrorMessage(code));
+    exit(EXIT_FAILURE);
   }
 }
