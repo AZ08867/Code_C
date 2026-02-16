@@ -8,6 +8,7 @@
     "malloc",
     "memcpy",
     "nullptr",
+    "scanf",
     "stdbool",
     "stddef",
     "stdint",
