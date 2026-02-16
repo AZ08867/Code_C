@@ -187,3 +187,7 @@
 - [array2function/](array2function/read.md) - 数组与函数
 - [items-train/](items-train/read.md) - 综合训练
 - [array-pointer/](array-pointer/read.md) - 数组指针专项
+- [dynamic-array/](dynamic-array/read.md) - 动态数组示例
+- [pro-struct-pointer/](pro-struct-pointer/read.md) - 结构体与指针（图书馆示例）
+- [struct-pointer/](struct-pointer/read.md) - 结构体指针示例
+- [trains/](trains/read.md) - 练习题集（小项目与算法练习）
