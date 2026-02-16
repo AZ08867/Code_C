@@ -1,325 +1,189 @@
-# C Programming Language — Learning Notes
+# C 语言学习笔记
 
-## Chapter 1: Fundamental data types
+## 基础知识
 
-本章概述标准 C（C99/C11）中的基本内建类型。类型的字节大小与表示形式可能依赖于编译器与目标架构；下列值为常见平台（例如 x86-64 上的 gcc/clang）上的典型约定。请使用 sizeof 与 stdint.h 在可移植性要求较高的场景中获取确定性行为。
+### 基本数据类型
 
-- `int` — signed integer type; typically 4 bytes on modern desktop/server ABIs. Range is implementation-defined.
-- `float` — single-precision IEEE-754 floating-point; typically 4 bytes.
-- `double` — double-precision IEEE-754 floating-point; typically 8 bytes.
-- `char` — character type; at least 1 byte. May be signed or unsigned depending on implementation.
-- `_Bool` — boolean type introduced in C99 (include `<stdbool.h>` to use the token `bool`); typically 1 byte.
-- `#define` — preprocessor macro for textual substitution and constants (compile-time).
+- `int` - 整数，4字节
+- `float` - 单精度浮点，4字节
+- `double` - 双精度浮点，8字节
+- `char` - 字符，1字节
+- `_Bool` - 布尔值（C99+）
 
-Notes:
+代码: [main.c](knowledge_points/main.c) | [hello.c](knowledge_points/hello.c)
 
-- Always prefer `stdint.h` types (e.g. `int32_t`, `uint32_t`) when fixed widths are required.
-- Use `sizeof(T)` to obtain actual byte size on the target platform.
+### 运算符
 
-Attachments:
+- 算术运算：`+` `-` `*` `/` `%`
+- 比较运算：`==` `!=` `>` `<` `>=` `<=`
+- 逻辑运算：`&&` `||` `!`
+- 位运算：`&` `|` `^` `~` `<<` `>>`
+- 赋值运算：`=` `+=` `-=` `*=` `/=` `%=`
+- 自增自减：`++` `--`
 
-1. [main.c](main.c)
-2. [hello.c](hello.c)
+代码: [operator.c](knowledge_points/operator.c)
 
-## Chapter 2: Operators and Expressions
+### 条件语句
 
-- Arithmetic: `+`, `-`, `*`, `/`, `%`
-- Relational: `==`, `!=`, `>`, `<`, `>=`, `<=`
-- Logical: `&&`, `||`, `!`
-- Bitwise: `&`, `|`, `^`, `~`, `<<`, `>>`
-- Assignment: `=`, `+=`, `-=`, `*=`, `/=`, `%=`
-- Increment/Decrement: `++`, `--`
+- `if` / `if-else` / `if-else if-else`
+- `switch-case` - 记得加 `break` 避免穿透
 
-Remarks on bitwise operators (按位运算):
+代码: [control.c](knowledge_points/control.c)
 
-按位运算用于在位级别上处理整数表示。请注意有符号整数的右移行为在移位负值时可能由实现定义；位运算常用于掩码、标志位与性能敏感的低级操作。
+### 循环语句
 
-Attachment:
+- `while` - 条件循环
+- `do-while` - 至少执行一次
+- `for` - 计数循环
+- `break` / `continue` - 循环控制
 
-1. [operator.c](operator.c)
+代码: [loop.c](knowledge_points/loop.c) | [loop_for.c](knowledge_points/loop_for.c) | [loop_do.c](knowledge_points/loop_do.c) | [loop_continue.c](knowledge_points/loop_continue.c)
 
-## Chapter 3: Control Structures
+练习: [quadratic_sum](trains/quadratic_sum.c) | [countdown](trains/countdown.c) | [factorial](trains/factorial.c) | [prime](trains/prime_number.c) | [multiplication_table](trains/multiplication_table.c) | [pyramid](trains/digital_pyramid.c) | [progress_bar](trains/progress_bar.c)
 
-- `if`
-  - Syntax: `if (expression) statement;`
-  - Example: `if (age >= 18) printf("You are an adult.\n");`
-- `if-else`
-  - Syntax: `if (expr) stmt1; else stmt2;`
-- `if - else if - else`
-  - Use when testing multiple mutually exclusive conditions.
-- `switch`
-  - Syntax: `switch (expression) { case constant: statements; break; ... default: statements; }`
-  - Note: switch uses integral constant expressions for cases; remember to add break to avoid fall-through (or use fall-through intentionally with comments).
+## 数组
 
-控制结构用于决定程序的执行流向：条件分支（if/switch）用于选择性执行，循环结构用于重复执行。编写分支时注意可读性与边界条件处理。
+- 声明：`type arr[size];`
+- 连续的内存块
+- 代码: [initial_use_array.c](knowledge_points/initial_use_array.c)
+- 练习: [array_case.c](trains/array_case.c)
 
-## Chapter 4: Loop Structures
+## 函数
 
-- `while`
-  - Syntax: `while (expression) statement;`
-  - Use for condition-driven repetition.
-- `do-while`
-  - Syntax: `do { statements } while (expression);`
-  - Guarantees body executes at least once.
-- `for`
+### 基础
 
-  - Syntax: `for (init; condition; update) statement;`
-  - Idiomatic for counter-based loops.
+- 函数声明/定义
+- 参数传递（值传递）
+- 返回值
 
-- `while`
-  - 用于条件驱动的重复执行，适合循环次数不确定且由运行时条件终止的场景。
-- `do-while`
-  - 适用于至少需要执行一次循环体的场景；注意循环不变式与终止条件。
+### 特殊用法
 
-Attachments:
+- 递归函数（需要有基准情况）
+- 静态局部变量（保持值跨函数调用）
 
-- [loop.c](loop.c)
-- [loop_case.c](loop_case.c)
-- [loop_do.c](loop_do.c)
-- [loop_continue.c](loop_continue.c)
-- [loop_for.c](loop_for.c)
+代码: [func.c](knowledge_points/func.c) | [static.c](knowledge_points/static.c)
 
-Training exercises (trains):
+练习: [func_case.c](trains/func_case.c) | [factorial_recursion.c](trains/factorial_recursion.c)
 
-- [trains/quadratic_sum.c](./trains/quadratic_sum.c)
-- [trains/countdown.c](./trains/countdown.c)
-- [trains/factorial.c](./trains/factorial.c)
-- [trains/prime_number.c](./trains/prime_number.c)
-- [trains/multiplication_table.c](./trains/multiplication_table.c)
-- [trains/digital_pyramid.c](./trains/digital_pyramid.c)
-- [trains/progress_bar.c](./trains/progress_bar.c)
+## 指针
 
-## Chapter 5: Arrays and Pointers
+### 基础概念
 
-- Array declaration: `type name[size];`
-- Arrays are contiguous sequences of elements; decay to pointers in many expressions.
-- Prefer explicit size types and bounds checking when possible.
+- 存储地址：`type *p;`
+- 指针运算按类型大小移动
+- 空指针：`NULL`
+- 避免野指针和重复释放
 
-数组在内存中是连续存储的元素序列，在多数表达式中会衰减为指针。编写与数组相关的代码时，应显式关注边界检查与元素类型的对齐与大小。
+### 指针的使用
 
-Attachments:
+- 指针数组
+- 多级指针：`int **pp;`
+- 指向数组的指针
+- 函数指针
 
-- [initial_use_array.c](initial_use_array.c)
-- [trains/array_case.c](./trains/array_case.c)
+代码: [pointer.c](knowledge_points/pointer.c) | [m_ptr.c](knowledge_points/m_ptr.c)
 
-## Chapter 6: Functions
+练习: [pointer_case.c](trains/pointer_case.c) | [pointer_case_pro.c](trains/pointer_case_pro.c) | [ptr_matrix.c](trains/ptr_matrix.c) | [pointer_array.c](trains/pointer_array.c) | [pointer_func.c](trains/pointer_func.c) | [pointer_func_case.c](trains/pointer_func_case.c)
 
-Prototype example:
+## 复合数据类型
 
-```c
-void greet(int age);
-```
+### 结构体 (struct)
 
-- Formal parameter: `int age`
-- Actual argument: `greet(18);`
+- 组合相关的多个成员
+- 用 `typedef` 简化类型定义
+- 注意内存对齐
 
-Topics:
+代码: [struct.c](knowledge_points/struct.c)
 
-- Recursion — functions that call themselves; ensure a base case to avoid unbounded recursion.
-- Static local variables — preserve value across function calls (use static keyword).
+练习: [struct_case.c](trains/struct_case.c) | [struct_case_ptr.c](trains/struct_case_ptr.c)
 
-函数参数采用值传递语义（按值复制）。若需在函数内部修改调用者的数据，应传入指针或结构的地址以实现间接修改。递归函数必须保证基准情况以避免栈耗尽。
+### 枚举 (enum)
 
-Attachments:
+- 定义一组具名常量
+- 默认从 0 开始，逐个递增
+- 可指定具体值
 
-- [func.c](func.c)
-- [trains/func_case.c](./trains/func_case.c)
-- [trains/factorial_recursion.c](./trains/factorial_recursion.c)
-- [static.c](static.c)
+代码: [enum.c](knowledge_points/enum.c)
 
-## Chapter 7: Memory, Pointers and Addressing
+### 联合体 (union)
 
-- Pointer variables — hold memory addresses; declared as `T *p;`
-- Pointer arithmetic — moves in units of the pointed type `sizeof(T)`.
-- Pointer arrays — arrays whose elements are pointers.
-- Pointer-to-pointer — `T **pp;`
-- Function pointers — allow storing and passing functions.
-- Null pointer — represents "no object" (use `NULL` or nullptr-like semantics).
-- Dangling/wild pointers — pointers that reference freed or invalid memory; avoid by initializing and nulling after free.
+- 多个成员共享同一块内存
+- 大小等于最大成员
+- 用于节省内存或数据重解释
 
-Style conventions:
+代码: [union.c](knowledge_points/union.c)
 
-```c
-int* p; // emphasizes that p is a pointer to int (stylistic)
-int *p; // emphasizes that *p has type int (classic)
-```
+## 字符串
 
-`size_t` — unsigned integer type used for object sizes and array indexing (defined in `<stddef.h>` / `<stdint.h>`).
+- 以 `\0` 结尾的字符数组
+- 使用 `string.h` 的标准函数
+- 注意缓冲区溢出
 
-Parameter passing:
+代码: [string.c](knowledge_points/string.c) | [string_func.c](knowledge_points/string_func.c)
 
-- C uses pass-by-value semantics: function parameters receive copies of the argument values.
-- To allow a function to modify a caller's object, pass a pointer to that object (i.e., simulate pass-by-reference).
+练习: [string_case.c](trains/string_case.c)
 
-指针用于保存内存地址，指针算术按所指类型的对象大小递增或递减。使用指针时应明确所有权与生命周期，避免野指针与重复释放。空指针（`NULL`）用于表示“不指向任何对象”的语义。
+## 文件 I/O
 
-`size_t` 为无符号整型，专用于表示对象大小与数组索引，使用时应注意与有符号类型的比较与转换。
+### 基础操作
 
-Attachments:
+- `fopen()` - 打开文件
+- `fread()` / `fwrite()` - 读写数据
+- `fclose()` - 关闭文件
+- 检查返回值，及时释放资源
 
-- [pointer.c](pointer.c)
-- [trains/pointer_case.c](./trains/pointer_case.c)
-- [trains/pointer_case_pro.c](./trains/pointer_case_pro.c)
-- [trains/ptr_matrix.c](./trains/ptr_matrix.c)
-- [trains/pointer_array.c](./trains/pointer_array.c)
-- [trains/pointer_func.c](./trains/pointer_func.c)
-- [trains/pointer_func_case.c](./trains/pointer_func_case.c)
+代码: [read_file.c](knowledge_points/read_file.c) | [write_file.c](knowledge_points/write_file.c) | [file_func.c](knowledge_points/file_func.c) | [file_err.c](knowledge_points/file_err.c) | [file_append.c](knowledge_points/file_append.c)
 
-## Chapter 8: Struct, Enum and Union
+练习: [bin_r_w.c](trains/bin_r_w.c) | [copy_file.c](trains/copy_file.c)
 
-Struct:
+## 标准库
 
-- Use typedef to create convenient aliases:
+### Math.h - 数学函数
 
-```c
-typedef struct Date {
-    int day;
-    int month;
-    int year;
-} Date;
-```
+代码: [math_exp.c](knowledge_points/math_exp.c)
 
-- Use structs to aggregate related data; consider padding/alignment effects on `sizeof`.
+### Time.h - 时间函数
 
-结构体用于将多个相关数据项组合为一个复合类型；应考虑内存对齐与填充对 sizeof 的影响。使用 typedef 可以使类型名更简洁、更易读。
+代码: [time_exp.c](knowledge_points/time_exp.c)
 
-Enum:
+## 动态内存
 
-- Enumerations define related named integer constants.
-- By default values start at 0 and increment by 1; explicit values can be assigned.
+### 栈 vs 堆
 
-枚举用于定义一组具名的整型常量，便于表达状态与选项集合；在需要与外部接口交换固定值时推荐使用显式枚举值。
+#### 栈内存
 
-Union:
+- 局部变量自动分配和释放
+- 快速，但大小受限
+- 函数返回时自动销毁
 
-- A union stores different types in the same memory region; its size equals its largest member.
-- Use unions when it is necessary to reinterpret storage or conserve memory — be cautious about active member semantics.
+#### 堆内存
 
-联合体在同一内存区域按不同类型重用存储，非常适合节省内存或实现低级数据重解释；访问时必须明确当前“活动成员”的语义以避免未定义行为。
+- 手动管理：`malloc()` / `calloc()` / `realloc()` / `free()`
+- 大小灵活
+- 需要手动释放，避免内存泄漏
 
-Attachments:
+代码: [dynamic.c](knowledge_points/dynamic.c)
 
-- [struct.c](struct.c)
-- [trains/struct_case.c](./trains/struct_case.c)
-- [trains/struct_case_ptr.c](./trains/struct_case_ptr.c)
-- [enum.c](enum.c)
-- [union.c](union.c)
+练习: [malloc_case.c](trains/malloc_case.c) | [calloc_case.c](trains/calloc_case.c) | [realloc_case.c](trains/realloc_case.c)
 
-## Chapter 9: String Handling
+### 多级指针和动态数据结构
 
-- In C, strings are NUL-terminated char arrays.
-- Prefer safe functions (`strncpy`/`strncat`/`strlcpy` where available) and always ensure termination.
-- Use `string.h` for standard routines (`strlen`, `memcpy`, `strcmp`, etc.).
+代码: [m_ptr.c](knowledge_points/m_ptr.c) | [manage_dds.c](knowledge_points/manage_dds.c)
 
-在 C 中，字符串由以 NUL (`'\0'`) 结尾的 char 数组表示。处理字符串时应始终保证终止符存在，避免缓冲区溢出。优先使用带边界限制的字符串函数或手动检查长度。
+练习: [m_ptr_case.c](trains/m_ptr_case.c)
 
-Attachments:
+## 函数指针
 
-- [string.c](string.c)
-- [string_func.c](string_func.c)
-- [trains/string_case.c](./trains/string_case.c)
+存储函数的地址，用于回调、多态等场景。
 
-## Chapter 10: Streams (stdin, stdout, files)
+代码: [func_ptr.c](knowledge_points/func_ptr.c) | [function_pointer.md](knowledge_points/function_pointer.md)
 
-Stream categories:
+练习: [func_ptr_case.c](trains/func_ptr_case.c) | [callback.c](trains/callback.c)
 
-流（stream）是抽象的 I/O 源/目标，如文件、标准输入输出、管道或网络套接字。使用文件 I/O 时应检查返回值并及时释放资源以防资源泄露。
+## 进阶项目
 
-1. File streams — reading/writing disk files (`FILE*`, `fopen`, `fread`, `fwrite`, `fclose`).
-2. Standard streams — `stdin`, `stdout`, `stderr`.
-3. Pipes — inter-process communication where one process's output can be another's input.
-4. Memory streams — in-memory buffering APIs.
-5. Network streams — socket-based I/O.
-6. Device streams — platform/device-specific interfaces.
-
-Attachments:
-
-- [read_file.c](read_file.c)
-- [write_file.c](write_file.c)
-- [file_func.c](file_func.c)
-- [file_err.c](file_err.c)
-- [file_append.c](file_append.c)
-- [trains/bin_r_w.c](./trains/bin_r_w.c)
-- [trains/copy_file.c](./trains/copy_file.c)
-
-General recommendations
-
-通用建议：在有可移植性要求时使用明确宽度类型（`stdint.h`）；对 I/O、内存分配等函数的返回值进行检查；明确资源的所有权并及时释放；启用编译器警告以尽早发现潜在缺陷。
-
-## Chapter 11: Math.h
-
-Attachments:
-
-- [math_exp.c](math_exp.c)
-
-## Chapter 12: Time.h
-
-Attachments:
-
-- [time_exp.c](time_exp.c)
-
-## Chapter 13: Dynamic memory allocation
-
-计算机操作系统内存的管理机制：
-有以下两种不同的存储区域
-
-1. 栈内存(Stack Memory)
-   `int number; --> 4bytes`
-   `int arr[4]; --> 编译时确定是4个长度`
-   a. 自动管理机制：函数调用的时候，局部变量会被分配在栈上，当函数返回的时候，局部变量全部销毁释放
-   b. 速度快：栈内存的分配和访问速度通常要比堆内存快，但是它是一种线性的数据结构
-   c. 大小有限制
-   d. 函数的局部变量、函数参数、函数调用的返回地址
-
-2. 堆内存(Heap Memory)
-   a. 手动内存管理：`malloc`, `calloc`, `realloc`, `free`
-   b. 大小灵活
-
-区分：
-a. 分配机制
-b. 生命周期
-c. 访问速度
-d. 用途区分
-
-Attachments:
-
-- [dynamic.c](dynamic.c)
-- [trains/realloc_case.c](./trains/realloc_case.c)
-- [trains/malloc_case.c](./trains/malloc_case.c)
-- [trains/calloc_case.c](./trains/calloc_case.c)
-
-### Multilevel Pointers
-
-Attachments:
-
-- [m_ptr.c](m_ptr.c)
-- [trains/m_ptr_case.c](./trains/m_ptr_case.c)
-
-### Management of Dynamic Data Structures
-
-Attachments:
-
-- [manage_dds.c](manage_dds.c)
-
-## Chapter 14: Function Pointer
-
-Attachments:
-
-- [func_ptr.c](func_ptr.c)
-- [trains/func_ptr_case.c](./trains/func_ptr_case.c)
-- [trains/callback.c](./trains/callback.c)
-- [function_pointer.md](./function_pointer.md)
-
-### Pro
-
-Attachments:
-
-- [read](./pro/read.md)
-
-- [queue](./queue/read.md)
-
-- [array2function](./array2function/read.md)
-
-- [items-train](./items-train/read.md)
-
-- [array-pointer](./array-pointer/read.md)
+- [pro/](pro/read.md) - 专业应用
+- [queue/](queue/read.md) - 队列实现
+- [array2function/](array2function/read.md) - 数组与函数
+- [items-train/](items-train/read.md) - 综合训练
+- [array-pointer/](array-pointer/read.md) - 数组指针专项
