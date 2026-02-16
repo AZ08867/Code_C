@@ -321,3 +321,5 @@ Attachments:
 - [array2function](./array2function/read.md)
 
 - [items-train](./items-train/read.md)
+
+- [array-pointer](./array-pointer/read.md)
